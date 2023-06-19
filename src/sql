@@ -1,0 +1,42 @@
+CREATE TABLE products
+(
+    id            SERIAL PRIMARY KEY,
+    product_name  VARCHAR(300) NOT NULL,
+    manufacturer  VARCHAR(50)  NOT NULL,
+    product_count INTEGER,
+    price         NUMERIC
+);
+
+INSERT INTO products(product_name, manufacturer, product_count, price)
+VALUES ('IPhone X', 'Apple', 4, 35000),
+       ('IPhone 8', 'Apple', 17, 15000),
+       ('IPhone 7', 'Apple', 3, 11000),
+       ('IPhone 8', 'Apple', 19, 15000);
+
+SELECT *  from products where price not between 13000 and 28000;
+
+select price, 'apple' from products;
+
+delete from products where product_name like '%Phone 8';
+
+SELECT * FROM products WHERE product_name = 'IPhone X';
+
+SELECT * FROM products WHERE id = 3;
+
+SELECT * FROM products WHERE product_count = 17;
+
+SELECT * FROM products WHERE products.product_name LIKE '%7';
+
+SELECT * FROM products;
+
+select sum(price) as this_is_avg from products;
+
+select count() as kol,
+       sum(price) as summa,
+       max(price) as maximum,
+       min(price) as minimum
+from products;
+
+select count() as count from products group by price ;
+
+select count() as count from products group by product_name having count() > 1;
